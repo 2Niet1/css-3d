@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul,li{
+		padding: 0;
+		margin:0;
+	}
+          .aboutImg ul img {
+			    position: absolute;
+			    transition: .5s;
+			}
+	        li {
+			    list-style: none;
+			}
+			.aboutImg{
+				    position: absolute;
+				    width: 560px;
+				    height: 300px;
+				    border: 5px solid rgba(255,255,255,0.5);
+				    border-radius: 8px;
+				    z-index: 3;
+				    overflow: hidden;
+				    cursor: pointer;
+				    transition: 1s;
+			}
+			ul {
+		    width: 100%;
+		    height: 100%;
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    z-index: 5;}
+		    #aboutContent .aboutImg span {
+			    width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    transform: scale(1.5);
+			    -webkit-transform: scale(1.5);
+			    transition: .5s;
+           }
+           .aboutImg ul li {
+					    float: left;
+					    position: relative;
+					    overflow: hidden;
+					}
+					span{
+						width: 100%;
+					    height: 100%;
+					    position: absolute;
+					    left: 0;
+					    top: 0;
+					    background-image:url(./img/3.png);
+					    transform:scale(1.5);
+					    transition:all 1s;
+					}
+
+	</style>
+</head>
+<body>
+	<div class="aboutImg">
+		<ul>
+			<li><img src="./img/4.png" alt=""></li>
+			<li><img src="./img/4.png" alt=""></li>
+			<li><img src="./img/4.png" alt=""></li>
+			<li><img src="./img/4.png" alt=""></li>
+			
+		</ul>
+		<span></span>
+	</div>
+	
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+        aboutContent();
+		function aboutContent(){
+			$("ul");$("span");
+			var w=$("ul").width()/2;
+			var h=$("ul").height()/2;
+			//分配每个li的高于宽 然后移动li里面的img位置
+			$("ul li").each(function(index,elem){
+                  $(elem).css({'width':w+'px'});
+                  $(elem).css({'height':h+'px'});
+                  $(elem).find('img').css({'left':-index%2*w+"px"});
+                  $(elem).find('img').css({'top':-Math.floor(index/2)*h+"px"});
+                  
+			})
+			var data = [
+                { name : 'top' , value : h },
+                { name : 'left' , value : - w*2 },
+                { name : 'left' , value : w },
+                { name : 'top' , value : - h*2 },
+            ];
+           
+             var aImg = $('ul img');
+             $("ul ").on("mouseover",function(){
+                     $("ul li img").each(function(index,elem){
+                     	 $(elem)[0].style[data[index].name]=data[index].value+'px';
+                     	 // console.log(data[index].name=data[index].value+'px'); 
+                     })  
+                     $("span").css({"transform":"scale(1)"})
+
+             })
+              $("ul ").on("mouseout",function(){
+                     $("ul li").each(function(index,elem){
+                     	 $(elem).find('img').css({'left':-index%2*w+"px"});
+                         $(elem).find('img').css({'top':-Math.floor(index/2)*h+"px"});
+                     	 // console.log(data[index].name=data[index].value+'px'); 
+                     })  
+                      $("span").css({"transform":"scale(1.5)"})
+
+             })
+             console.log(w);
+             console.log(h);
+		}
+             
+</script>
+</html>
