@@ -4,10 +4,10 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-	ul,li{
-		padding: 0;
-		margin:0;
-	}
+			ul,li{
+				padding: 0;
+				margin:0;
+			}
           .aboutImg ul img {
 			    position: absolute;
 			    transition: .5s;
@@ -16,23 +16,24 @@
 			    list-style: none;
 			}
 			.aboutImg{
-				    position: absolute;
-				    width: 560px;
-				    height: 300px;
-				    border: 5px solid rgba(255,255,255,0.5);
-				    border-radius: 8px;
-				    z-index: 3;
-				    overflow: hidden;
-				    cursor: pointer;
-				    transition: 1s;
+			    position: absolute;
+			    width: 560px;
+			    height: 300px;
+			    border: 5px solid rgba(255,255,255,0.5);
+			    border-radius: 8px;
+			    z-index: 3;
+			    overflow: hidden;
+			    cursor: pointer;
+			    transition: 1s;
 			}
 			ul {
-		    width: 100%;
-		    height: 100%;
-		    position: absolute;
-		    left: 0;
-		    top: 0;
-		    z-index: 5;}
+			    width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    z-index: 5;
+			}
 		    #aboutContent .aboutImg span {
 			    width: 100%;
 			    height: 100%;
@@ -44,20 +45,20 @@
 			    transition: .5s;
            }
            .aboutImg ul li {
-					    float: left;
-					    position: relative;
-					    overflow: hidden;
+			    float: left;
+			    position: relative;
+			    overflow: hidden;
 					}
-					span{
-						width: 100%;
-					    height: 100%;
-					    position: absolute;
-					    left: 0;
-					    top: 0;
-					    background-image:url(./img/3.png);
-					    transform:scale(1.5);
-					    transition:all 1s;
-					}
+			span{
+				width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    background-image:url(./img/3.png);
+			    transform:scale(1.5);
+			    transition:all 1s;
+			}
 
 	</style>
 </head>
@@ -89,6 +90,7 @@
                   $(elem).find('img').css({'top':-Math.floor(index/2)*h+"px"});
                   
 			})
+			//为移入移出的时候各个小块图片移动距离
 			var data = [
                 { name : 'top' , value : h },
                 { name : 'left' , value : - w*2 },
@@ -99,23 +101,24 @@
              var aImg = $('ul img');
              $("ul ").on("mouseover",function(){
                      $("ul li img").each(function(index,elem){
+                     	//jq设置css失败 所以只能使用原生的
                      	 $(elem)[0].style[data[index].name]=data[index].value+'px';
-                     	 // console.log(data[index].name=data[index].value+'px'); 
+                     	 
                      })  
                      $("span").css({"transform":"scale(1)"})
 
              })
               $("ul ").on("mouseout",function(){
+              	//移出的时候恢复原状
                      $("ul li").each(function(index,elem){
                      	 $(elem).find('img').css({'left':-index%2*w+"px"});
                          $(elem).find('img').css({'top':-Math.floor(index/2)*h+"px"});
-                     	 // console.log(data[index].name=data[index].value+'px'); 
+                     	
                      })  
                       $("span").css({"transform":"scale(1.5)"})
 
              })
-             console.log(w);
-             console.log(h);
+             
 		}
              
 </script>
